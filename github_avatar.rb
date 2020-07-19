@@ -65,6 +65,6 @@ class GithubAvatar
   end
 
   def save_png
-    png.save('images/image.png')
+    png.save('examples/image.png')
   end
 end
