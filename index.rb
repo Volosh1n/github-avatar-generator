@@ -1,3 +1,3 @@
 require './github_avatar.rb'
 
-GithubAvatar.new.call
+GithubAvatar.create.save('examples/image.png')

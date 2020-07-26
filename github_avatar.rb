@@ -1,11 +1,22 @@
 require 'chunky_png'
 
 class GithubAvatar
+  def self.create(*args)
+    new(*args).call
+  end
+
+  attr_reader :height, :width
+
+  def initialize(height: 420, width: 420)
+    @height = height
+    @width = width
+  end
+
   def call
     draw_squares_with_coordinates(left_figure_coordinates)
     mirror_left_side_to_right
     draw_squares_with_coordinates(central_figure_coordinates)
-    save_png
+    png_with_demanded_size
   end
 
   private
@@ -64,7 +75,7 @@ class GithubAvatar
     end
   end
 
-  def save_png
-    png.save('examples/image.png')
+  def png_with_demanded_size
+    png.resize(height, width)
   end
 end
